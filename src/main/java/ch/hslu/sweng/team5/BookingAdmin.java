@@ -18,7 +18,7 @@ public class BookingAdmin {
         return bookingList;
     }
 
-    public static void addBooking(Movie movie, int seatsBooked){
+    public static void createBooking(Movie movie, int seatsBooked){
         if(checkAvlSeats(seatsBooked, movie)) {
             Booking newBooking = new Booking(movie, seatsBooked);
             bookingList.add(newBooking);
@@ -28,7 +28,7 @@ public class BookingAdmin {
         }
     }
 
-    public void deleteBooking(Booking booking){
+    public static void deleteBooking(Booking booking){
         if (bookingList.contains(booking)) {
             bookingList.remove(booking);
             setBookedSeats((-booking.getSeatsBooked()), booking.getMovie());

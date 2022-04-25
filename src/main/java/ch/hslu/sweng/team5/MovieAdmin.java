@@ -22,11 +22,12 @@ public class MovieAdmin {
     public MovieAdmin() {
     }
 
-    public void createMovie(String movieName){
+    public static Movie createMovie(String movieName){
         Movie newMovie = new Movie(movieName);
         movieList.add(newMovie);
+        return newMovie;
     }
-    public void deleteMovie(Movie movie){
+    public static void deleteMovie(Movie movie){
         if (movieList.contains(movie)) {
             movieList.remove(movie);
         } else {
