@@ -20,6 +20,9 @@ public class MovieAdmin {
     }
 
     public MovieAdmin() {
+        movie1pm = null;
+        movie6pm = null;
+        movie9pm = null;
     }
 
     public static Movie createMovie(String movieName){

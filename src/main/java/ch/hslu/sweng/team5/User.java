@@ -11,7 +11,7 @@ public class User {
     //private static Console console = new Console();
     private static Scanner scanner = new Scanner(System.in);
 
-    public static int displayInfo(){
+    public static void displayInfo(){
         System.out.println("[1] Display Movie Program");
         System.out.println("[2] Display Current reservations" + "\n");
 
@@ -25,14 +25,12 @@ public class User {
 
         System.out.println("[9] Save Data");
         System.out.println("[10] Reset Data");
-
-        return scanner.nextInt();
     }
 
     public static void displayMovieProgram(){
-        getMovie1pm().toString();
-        getMovie6pm().toString();
-        getMovie9pm().toString();
+        System.out.println(getMovie1pm().getName());
+        System.out.println(getMovie1pm().getName());
+        System.out.println(getMovie1pm().getName());
     }
     public static void displayReservations(){
         int i = 0;
