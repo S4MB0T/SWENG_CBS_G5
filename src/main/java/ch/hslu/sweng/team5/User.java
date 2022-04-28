@@ -11,9 +11,6 @@ public class User {
     //private static Console console = new Console();
     private static Scanner scanner = new Scanner(System.in);
 
-    public  User(){
-    }
-
     public static int displayInfo(){
         System.out.println("[1] Display Movie Program");
         System.out.println("[2] Display Current reservations" + "\n");
