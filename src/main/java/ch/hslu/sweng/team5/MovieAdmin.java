@@ -11,15 +11,11 @@ public class MovieAdmin {
     private static Movie movie6pm = new Movie("default name");
     private static Movie movie9pm = new Movie("default name");
 
-
-
-
-
-    public MovieAdmin() {
-        //movie1pm = new Movie("default name");
-        //movie6pm = new Movie("default name");
-        //movie9pm = new Movie("default name");
-       // movieList = new ArrayList<>();
+    //Static initialisation block to add the default movies to arrayList
+    static{
+        movieList.add(movie1pm);
+        movieList.add(movie6pm);
+        movieList.add(movie9pm);
     }
 
     public static Movie createMovie(String movieName){
@@ -28,6 +24,8 @@ public class MovieAdmin {
         return newMovie;
     }
     public static void deleteMovie(Movie movie){
+        movie.setBookedSeats(0);
+        movie.setName("Default name");
         if (movieList.contains(movie)) {
             movieList.remove(movie);
         } else {

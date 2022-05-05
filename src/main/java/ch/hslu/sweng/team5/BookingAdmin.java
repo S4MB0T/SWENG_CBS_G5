@@ -3,7 +3,7 @@ package ch.hslu.sweng.team5;
 import java.util.ArrayList;
 
 public class BookingAdmin {
-    private static ArrayList<Booking> bookingList;
+    private static final ArrayList<Booking> bookingList = new ArrayList<>();
 
     public static void setBookedSeats(int seats, Movie movie){
         movie.setBookedSeats(seats + movie.getBookedSeats());
@@ -21,6 +21,7 @@ public class BookingAdmin {
     public static void createBooking(Movie movie, int seatsBooked){
         if(checkAvlSeats(seatsBooked, movie)) {
             Booking newBooking = new Booking(movie, seatsBooked);
+            newBooking.generateRef();
             bookingList.add(newBooking);
             setBookedSeats(seatsBooked, movie);
         }else{
