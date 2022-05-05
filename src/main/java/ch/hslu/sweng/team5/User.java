@@ -131,11 +131,11 @@ public class User {
 
         int result = scanner.nextInt();
         if (result == 1){
-            createBooking(getMovie1pm(), seats);
+            new Booking(getMovie1pm(), seats);
         } else if (result == 2){
-            createBooking(getMovie6pm(), seats);
+            new Booking(getMovie6pm(), seats);
         } else if (result == 3){
-            createBooking(getMovie9pm(), seats);
+            new Booking(getMovie9pm(), seats);
         } else if (result == 0) {
             displayInfo();
         }

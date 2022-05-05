@@ -4,25 +4,22 @@ import java.util.ArrayList;
 
 public class MovieAdmin {
 
-    private static ArrayList<Movie> movieList;
+    private static ArrayList<Movie> movieList = new ArrayList<>();
 
     //Movie variables for timings
-    private static Movie movie1pm;
-    private static Movie movie6pm;
-    private static Movie movie9pm;
+    private static Movie movie1pm = new Movie("default name");
+    private static Movie movie6pm = new Movie("default name");
+    private static Movie movie9pm = new Movie("default name");
 
-    public static ArrayList<Movie> getMovieList() {
-        return movieList;
-    }
 
-    public static void setMovieList(ArrayList<Movie> movieList) {
-        MovieAdmin.movieList = movieList;
-    }
+
+
 
     public MovieAdmin() {
-        movie1pm = null;
-        movie6pm = null;
-        movie9pm = null;
+        //movie1pm = new Movie("default name");
+        //movie6pm = new Movie("default name");
+        //movie9pm = new Movie("default name");
+       // movieList = new ArrayList<>();
     }
 
     public static Movie createMovie(String movieName){
@@ -68,6 +65,14 @@ public class MovieAdmin {
 
     public static void setMovie9pm(Movie movie9pm) {
         MovieAdmin.movie9pm = movie9pm;
+    }
+
+    public static ArrayList<Movie> getMovieList() {
+
+        return movieList;
+    }
+    public static void setMovieList(ArrayList<Movie> movieList) {
+        MovieAdmin.movieList = movieList;
     }
 
 
