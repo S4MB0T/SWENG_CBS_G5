@@ -3,7 +3,7 @@ package ch.hslu.sweng.team5;
 import java.util.ArrayList;
 
 public class BookingAdmin {
-    private static ArrayList<Booking> bookingList;
+    private static ArrayList<Booking> bookingList = new ArrayList<>();
 
     public static void setBookedSeats(int seats, Movie movie){
         movie.setBookedSeats(seats + movie.getBookedSeats());

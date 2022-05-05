@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class MovieAdmin {
 
-    private static ArrayList<Movie> movieList;
+    private static ArrayList<Movie> movieList = new ArrayList<>();
 
     //Movie variables for timings
     private static Movie movie1pm;
