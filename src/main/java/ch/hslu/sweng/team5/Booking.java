@@ -2,7 +2,7 @@ package ch.hslu.sweng.team5;
 
 import java.util.Random;
 
-public class Booking {
+public class Booking implements java.io.Serializable{
 
     private Movie movie;
     private int seatsBooked;

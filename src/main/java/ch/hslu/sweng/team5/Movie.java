@@ -1,6 +1,6 @@
 package ch.hslu.sweng.team5;
 
-public class Movie {
+public class Movie implements java.io.Serializable{
 
     //Name of movie
     private String name;

@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 
 import static ch.hslu.sweng.team5.BookingAdmin.*;
+import static ch.hslu.sweng.team5.Data.loadData;
+import static ch.hslu.sweng.team5.Data.saveData;
 import static ch.hslu.sweng.team5.MovieAdmin.*;
 
 public class Menu {
@@ -27,8 +29,10 @@ public class Menu {
                 deleteBookings();
             } else if (r == 8) {
                 editBookings();
-            } else if (r == 9 || r == 10) {
-                System.out.println("Data save/load feature coming soon!");
+            } else if (r == 9) {
+                savingData();
+            } else if (r == 10){
+                loadingData();
             } else {
                 System.out.println("Please enter a number from the list!");
             }
@@ -51,9 +55,9 @@ public class Menu {
     }
 
     public static void displayMovieProgram(){
-        System.out.println("Time: 1 pm --- Movie: " +getMovie1pm().getName());
-        System.out.println("Time: 6 pm --- Movie: " +getMovie6pm().getName());
-        System.out.println("Time: 9 pm --- Movie: " +getMovie9pm().getName());
+        System.out.println("Time: 1 pm --- Movie: " +getMovie1pm().getName() +" --- Avl Seats: " + (getMovie1pm().getTotalSeats()-getMovie1pm().getBookedSeats()));
+        System.out.println("Time: 6 pm --- Movie: " +getMovie6pm().getName() +" --- Avl Seats: " + (getMovie6pm().getTotalSeats()-getMovie6pm().getBookedSeats()));
+        System.out.println("Time: 9 pm --- Movie: " +getMovie9pm().getName() +" --- Avl Seats: " + (getMovie9pm().getTotalSeats()-getMovie9pm().getBookedSeats()));
     }
     public static void displayReservations(){
         if (getBookingList().size() <= 0){
@@ -259,6 +263,14 @@ public class Menu {
             }
         }
 
+    }
+
+    public static void savingData(){
+        saveData();
+    }
+
+    public static void loadingData(){
+        loadData();
     }
 
 

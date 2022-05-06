@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class BookingAdmin {
     private static final ArrayList<Booking> bookingList = new ArrayList<>();
+    //Non-static arraylist for serialisation
+    private ArrayList<Booking> bookingsList = new ArrayList<>();
 
     public static void setBookedSeats(int seats, Movie movie){
         movie.setBookedSeats(seats + movie.getBookedSeats());
@@ -12,10 +14,6 @@ public class BookingAdmin {
         boolean k;
         k = seats <= (movie.getTotalSeats() - movie.getBookedSeats());
         return k;
-    }
-
-    public static ArrayList<Booking> getBookingList() {
-        return bookingList;
     }
 
     public static void createBooking(Movie movie, int seatsBooked){
@@ -51,5 +49,22 @@ public class BookingAdmin {
         } else {
             System.out.println("The booking does not exist");
         }
+    }
+
+    public ArrayList<Booking> generateBookingList(){
+        bookingsList.addAll(bookingList);
+        return bookingsList;
+    }
+
+    public static ArrayList<Booking> getBookingList() {
+        return bookingList;
+    }
+
+    public ArrayList<Booking> getBookingsList() {
+        return bookingsList;
+    }
+
+    public void setBookingsList(ArrayList<Booking> bookingsList) {
+        this.bookingsList = bookingsList;
     }
 }

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class MovieAdmin {
 
     private static ArrayList<Movie> movieList = new ArrayList<>();
+    //Non-static arraylist for serialisation
+    private ArrayList<Movie> moviesList = new ArrayList<>();
 
     //Movie variables for timings
     private static Movie movie1pm = new Movie("default name");
@@ -41,6 +43,15 @@ public class MovieAdmin {
         }
     }
 
+    //Add all movies from the static arraylist to non-static one for serialisation
+    public ArrayList<Movie> generateMovieList(){
+        //moviesList.addAll(movieList);
+        moviesList.add(movie1pm);
+        moviesList.add(movie6pm);
+        moviesList.add(movie9pm);
+        return moviesList;
+    }
+
     public static Movie getMovie1pm() {
         return movie1pm;
     }
@@ -71,6 +82,13 @@ public class MovieAdmin {
     }
     public static void setMovieList(ArrayList<Movie> movieList) {
         MovieAdmin.movieList = movieList;
+    }
+    public ArrayList<Movie> getMoviesList() {
+        return moviesList;
+    }
+
+    public void setMoviesList(ArrayList<Movie> moviesList) {
+        this.moviesList = moviesList;
     }
 
 
