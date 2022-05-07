@@ -51,7 +51,7 @@ public class Menu {
         System.out.println("[8] Edit Booking" +"\n");
 
         System.out.println("[9] Save Data");
-        System.out.println("[10] Reset Data");
+        System.out.println("[10] Load Data");
     }
 
     public static void displayMovieProgram(){
@@ -129,13 +129,14 @@ public class Menu {
             deleteMovie(getMovieList().get(scanner.nextInt()));
             if (getMovie1pm() == null){
                 setMovie1pm(new Movie("Default name"));
-                getMovieList().add(getMovie1pm());
+                //getMovieList().add(getMovie1pm());
+                // ^^Was initially added. Not required as movies with name "default name" rather not exist in the list
             } else if (getMovie6pm() == null){
                 setMovie6pm(new Movie("Default name"));
-                getMovieList().add(getMovie6pm());
+                //getMovieList().add(getMovie6pm());
             } else if (getMovie9pm() == null){
                 setMovie9pm(new Movie("Default name"));
-                getMovieList().add(getMovie9pm());
+                //getMovieList().add(getMovie9pm());
             }
         } else if (result == 0){
             System.out.println("\n"+"----- Exiting menu -----"+"\n");
@@ -270,7 +271,40 @@ public class Menu {
     }
 
     public static void loadingData(){
+
         loadData();
+
+        System.out.println("Movies in list but not in current program:" + "\n" + "Choose movie to set in current program:");
+
+        for (Movie currMovie : getMovieList()) {
+            if (!currMovie.equals(getMovie1pm()) && !currMovie.equals(getMovie6pm()) && !currMovie.equals(getMovie9pm())) {
+                System.out.println("["+ getMovieList().indexOf(currMovie) + "] " + currMovie.getName());
+            }
+        }
+        System.out.println("\n"+"[99] Exit");
+
+        int r = scanner.nextInt();
+        if (r <= getMovieList().size()) {
+            Movie currMovie = getMovieList().get(r);
+        }
+
+        System.out.println("Select a movie to replace: ");
+        System.out.println("[1] " + getMovie1pm().getName());
+        System.out.println("[2] " + getMovie6pm().getName());
+        System.out.println("[3] " + getMovie9pm().getName() + "\n");
+        System.out.println("[0] Exit");
+
+        int result = scanner.nextInt();
+        if (result == 1){
+            setMovie1pm(getMovieList().get(r));
+        } else if (result == 2){
+            setMovie6pm(getMovieList().get(r));
+        } else if (result == 3){
+            setMovie9pm(getMovieList().get(r));
+        } else if (result == 0){
+            System.out.println("\n"+"----- Exiting menu -----"+"\n");
+        }
+
     }
 
 
