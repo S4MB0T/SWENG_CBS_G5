@@ -22,6 +22,7 @@ public class BookingAdmin {
             newBooking.generateRef();
             bookingList.add(newBooking);
             setBookedSeats(seatsBooked, movie);
+            System.out.println("*** BOOKING SUCCESSFULLY ADDED! ***");
         }else{
             System.out.println("Error in booking");
         }
@@ -31,6 +32,7 @@ public class BookingAdmin {
         if (bookingList.contains(booking)) {
             bookingList.remove(booking);
             setBookedSeats((-booking.getSeatsBooked()), booking.getMovie());
+            System.out.println("*** BOOKING SUCCESSFULLY DELETED! ***");
         } else {
             System.out.println("The booking does not exist");
         }
@@ -42,6 +44,7 @@ public class BookingAdmin {
             if(checkAvlSeats(newBookedSeats, newMovie)) {
                 selectedBooking.setMovie(newMovie);
                 selectedBooking.setSeatsBooked(newBookedSeats);
+                System.out.println("*** BOOKING SUCCESSFULLY EDITED! ***");
             } else{
                 System.out.println("Error in booking");
             }

@@ -14,11 +14,11 @@ public class MovieAdmin {
     private static Movie movie9pm = new Movie("default name");
 
     //Static initialisation block to add the default movies to arrayList
-    static{
-        movieList.add(movie1pm);
-        movieList.add(movie6pm);
-        movieList.add(movie9pm);
-    }
+//    static{
+//        movieList.add(movie1pm);
+//        movieList.add(movie6pm);
+//        movieList.add(movie9pm);
+//    }
 
     public static Movie createMovie(String movieName){
         Movie newMovie = new Movie(movieName);
@@ -30,16 +30,18 @@ public class MovieAdmin {
         movie.setName("Default name");
         if (movieList.contains(movie)) {
             movieList.remove(movie);
+            System.out.println("*** MOVIE SUCCESSFULLY DELETED! ***" + "\n" + "** MOVIE VALUES CHANGED TO DEFAULT **");
         } else {
-            System.out.println("The movie does not exist");
+            System.out.println("*** This movie does not exist. Please add a movie first. ***");
         }
     }
     public static void editMovie(Movie selectedMovie, String newName, int bookedSeats) {
         if (movieList.contains(selectedMovie)) {
             selectedMovie.setName(newName);
             selectedMovie.setBookedSeats(bookedSeats);
+            System.out.println("*** MOVIE SUCCESSFULLY EDITED! ***");
         } else {
-            System.out.println("The movie does not exist");
+            System.out.println("*** This movie does not exist. Please add a movie first. ***");
         }
     }
 

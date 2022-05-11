@@ -1,5 +1,6 @@
 package ch.hslu.sweng.team5;
 
+
 import java.util.Scanner;
 
 
@@ -63,11 +64,9 @@ public class Menu {
         if (getBookingList().size() <= 0){
             System.out.println("*** THERE ARE NO BOOKINGS CURRENTLY! ***");
         } else {
-            int i = 0;
             for (Booking currBook : getBookingList()) {
-                System.out.println("[" + i + "]" + "BookingRef: " + currBook.getReference() +
+                System.out.println("[" + getBookingList().indexOf(currBook) + "]" + "BookingRef: " + currBook.getReference() +
                         "; Movie: " + currBook.getMovie().getName() + "; Seats: " + currBook.getSeatsBooked());
-                i++;
             }
         }
     }
@@ -106,19 +105,22 @@ public class Menu {
         System.out.println("[4] Choose from complete movie list" + "\n");
         System.out.println("[0] Exit");
 
+
+
         int result = scanner.nextInt();
         if (result == 1){
             deleteMovie(getMovie1pm());
             setMovie1pm(new Movie("Default name"));
-            getMovieList().add(getMovie1pm());
+            //getMovieList().add(getMovie1pm());
+            // ^^Was initially added. Not required as movies with name "default name" rather not exist in the list
         } else if (result == 2){
             deleteMovie(getMovie6pm());
             setMovie6pm(new Movie("Default name"));
-            getMovieList().add(getMovie6pm());
+            //getMovieList().add(getMovie6pm());
         } else if (result == 3){
             deleteMovie(getMovie9pm());
             setMovie9pm(new Movie("Default name"));
-            getMovieList().add(getMovie9pm());
+            //getMovieList().add(getMovie9pm());
         } else if (result == 4){
             System.out.println("Enter index of movie from list");
             for (Movie currMovie : getMovieList()) {
@@ -127,60 +129,92 @@ public class Menu {
                 }
             }
             deleteMovie(getMovieList().get(scanner.nextInt()));
-            if (getMovie1pm() == null){
-                setMovie1pm(new Movie("Default name"));
-                //getMovieList().add(getMovie1pm());
-                // ^^Was initially added. Not required as movies with name "default name" rather not exist in the list
-            } else if (getMovie6pm() == null){
-                setMovie6pm(new Movie("Default name"));
-                //getMovieList().add(getMovie6pm());
-            } else if (getMovie9pm() == null){
-                setMovie9pm(new Movie("Default name"));
-                //getMovieList().add(getMovie9pm());
-            }
+
         } else if (result == 0){
             System.out.println("\n"+"----- Exiting menu -----"+"\n");
         }
-        System.out.println("*** MOVIE SUCCESSFULLY DELETED! ***" + "\n" + "** ALL VALUES CHANGED TO DEFAULT **");
+
     }
 
     public static void editMovies(){
         System.out.println("Select a movie to edit: ");
         System.out.println("[1] " + getMovie1pm().getName());
         System.out.println("[2] " + getMovie6pm().getName());
-        System.out.println("[3] " + getMovie9pm().getName() + "\n");
+        System.out.println("[3] " + getMovie9pm().getName());
+        System.out.println("[4] Choose movie from list to edit Movie Program" + "\n");
         System.out.println("[0] Exit");
+
+        String successMessage = "*** MOVIE SUCCESSFULLY EDITED! ***";
+        String errorMessage = "*** This movie does not exist. Please add a movie first. ***";
 
         int result = scanner.nextInt();
         scanner.nextLine();
         if (result == 1){
-            System.out.println("New name of movie: ");
-            String newName = scanner.nextLine();
-            System.out.println("New name of movie: " + newName);
-            System.out.println("Enter booked tickets (if any): ");
-            int seats = scanner.nextInt();
-            System.out.println("New seat booking for movie: " +seats);
-            editMovie(getMovie1pm(), newName, seats);
+            if (getMovieList().contains(getMovie1pm())) {
+                System.out.println("New name of movie: ");
+                String newName = scanner.nextLine();
+                System.out.println("New name of movie: " + newName);
+                System.out.println("Enter booked tickets (if any): ");
+                int seats = scanner.nextInt();
+                System.out.println("New seat booking for movie: " + seats);
+                editMovie(getMovie1pm(), newName, seats);
+                System.out.println(successMessage);
+            } else System.out.println(errorMessage);
         } else if (result == 2){
-            System.out.println("New name of movie: ");
-            String newName = scanner.nextLine();
-            System.out.println("New name of movie: " + newName);
-            System.out.println("Enter booked tickets (if any): ");
-            int seats = scanner.nextInt();
-            System.out.println("New seat booking for movie: " +seats);
-            editMovie(getMovie6pm(), newName, seats);
+            if (getMovieList().contains(getMovie6pm())) {
+                System.out.println("New name of movie: ");
+                String newName = scanner.nextLine();
+                System.out.println("New name of movie: " + newName);
+                System.out.println("Enter booked tickets (if any): ");
+                int seats = scanner.nextInt();
+                System.out.println("New seat booking for movie: " + seats);
+                editMovie(getMovie6pm(), newName, seats);
+                System.out.println(successMessage);
+            } else System.out.println(errorMessage);
         } else if (result == 3){
-            System.out.println("New name of movie: ");
-            String newName = scanner.nextLine();
-            System.out.println("New name of movie: " + newName);
-            System.out.println("Enter booked tickets (if any): ");
-            int seats = scanner.nextInt();
-            System.out.println("New seat booking for movie: " +seats);
-            editMovie(getMovie9pm(), newName, seats);
+            if (getMovieList().contains(getMovie9pm())) {
+                System.out.println("New name of movie: ");
+                String newName = scanner.nextLine();
+                System.out.println("New name of movie: " + newName);
+                System.out.println("Enter booked tickets (if any): ");
+                int seats = scanner.nextInt();
+                System.out.println("New seat booking for movie: " + seats);
+                editMovie(getMovie9pm(), newName, seats);
+                System.out.println(successMessage);
+            } else System.out.println(errorMessage);
+        } else if (result == 4){
+            System.out.println("Enter index of movie from list");
+            for (Movie currMovie : getMovieList()) {
+                if (!currMovie.equals(getMovie1pm()) && !currMovie.equals(getMovie6pm()) && !currMovie.equals(getMovie9pm())) {
+                    System.out.println("["+ getMovieList().indexOf(currMovie) + "] " + currMovie.getName());
+                }
+            }
+            int r = scanner.nextInt();
+            if (r <= getMovieList().size() && getMovieList().size() != 0) {
+                Movie currMovie = getMovieList().get(r);
+                System.out.println("Select a movie to replace: ");
+                System.out.println("[1] " + getMovie1pm().getName());
+                System.out.println("[2] " + getMovie6pm().getName());
+                System.out.println("[3] " + getMovie9pm().getName() + "\n");
+                System.out.println("[0] Exit");
+
+                int r1 = scanner.nextInt();
+                if (r1 == 1){
+                    setMovie1pm(currMovie);
+                    System.out.println(successMessage);
+                } else if (r1 == 2){
+                    setMovie6pm(currMovie);
+                    System.out.println(successMessage);
+                } else if (r1 == 3) {
+                    setMovie9pm(currMovie);
+                    System.out.println(successMessage);
+                }
+            } else System.out.println(errorMessage);
+
+
         } else if (result == 0){
             System.out.println("\n"+"----- Exiting menu -----"+"\n");
         }
-        System.out.println("*** MOVIE SUCCESSFULLY EDITED! ***");
     }
 
     public static void addBooking(){
@@ -203,7 +237,6 @@ public class Menu {
         } else if (result == 0) {
             System.out.println("\n"+"----- Exiting menu -----"+"\n");
         }
-        System.out.println("*** BOOKING SUCCESSFULLY ADDED! ***");
     }
 
     public static void deleteBookings(){
@@ -211,11 +244,9 @@ public class Menu {
             System.out.println("*** THERE ARE NO BOOKINGS CURRENTLY! ***");
         } else {
             System.out.println("Select booking to delete: " + "\n");
-            int i = 0;
             for (Booking currBook : getBookingList()){
-                System.out.println("["+i+"]" + "BookingRef: " + currBook.getReference() +
+                System.out.println("["+getBookingList().indexOf(currBook)+"]" + "BookingRef: " + currBook.getReference() +
                         "; Movie: " + currBook.getMovie() +"; Seats: " + currBook.getSeatsBooked());
-                i++;
             }
             int result = scanner.nextInt();
             if (result < getBookingList().size()){
@@ -224,7 +255,7 @@ public class Menu {
                 System.out.println("Enter a number within the index");
             }
         }
-        System.out.println("*** MOVIE SUCCESSFULLY DELETED! ***");
+
     }
 
     public static void editBookings(){
@@ -232,11 +263,9 @@ public class Menu {
             System.out.println("*** THERE ARE NO BOOKINGS CURRENTLY! ***");
         } else {
             System.out.println("Select booking to edit: " + "\n");
-            int i = 0;
             for (Booking currBook : getBookingList()){
-                System.out.println("["+i+"]" + "BookingRef: " + currBook.getReference() +
+                System.out.println("["+getBookingList().indexOf(currBook)+"]" + "BookingRef: " + currBook.getReference() +
                         "; Movie: " + currBook.getMovie().getName() +"; Seats: " + currBook.getSeatsBooked());
-                i++;
             }
             int result = scanner.nextInt();
             if (result < getBookingList().size()){
@@ -268,43 +297,23 @@ public class Menu {
 
     public static void savingData(){
         saveData();
+        System.out.println("*** DATA SUCCESSFULLY SAVED ***");
     }
 
     public static void loadingData(){
 
         loadData();
 
-        System.out.println("Movies in list but not in current program:" + "\n" + "Choose movie to set in current program:");
+        System.out.println("*** DATA SUCCESSFULLY LOADED ***");
+
+        System.out.println("Movies in list but not in current program:");
 
         for (Movie currMovie : getMovieList()) {
             if (!currMovie.equals(getMovie1pm()) && !currMovie.equals(getMovie6pm()) && !currMovie.equals(getMovie9pm())) {
                 System.out.println("["+ getMovieList().indexOf(currMovie) + "] " + currMovie.getName());
             }
         }
-        System.out.println("\n"+"[99] Exit");
-
-        int r = scanner.nextInt();
-        if (r <= getMovieList().size()) {
-            Movie currMovie = getMovieList().get(r);
-        }
-
-        System.out.println("Select a movie to replace: ");
-        System.out.println("[1] " + getMovie1pm().getName());
-        System.out.println("[2] " + getMovie6pm().getName());
-        System.out.println("[3] " + getMovie9pm().getName() + "\n");
-        System.out.println("[0] Exit");
-
-        int result = scanner.nextInt();
-        if (result == 1){
-            setMovie1pm(getMovieList().get(r));
-        } else if (result == 2){
-            setMovie6pm(getMovieList().get(r));
-        } else if (result == 3){
-            setMovie9pm(getMovieList().get(r));
-        } else if (result == 0){
-            System.out.println("\n"+"----- Exiting menu -----"+"\n");
-        }
-
+        System.out.println("\n"+"*** Use -- [5] Edit Movies -- to edit the movie program! ***");
     }
 
 
