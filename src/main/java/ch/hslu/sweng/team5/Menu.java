@@ -190,7 +190,7 @@ public class Menu {
                 }
             }
             int r = scanner.nextInt();
-            if (r <= getMovieList().size() && getMovieList().size() != 0) {
+            if (r <= getMovieList().size() && getMovieList().size() != 0 && getMovieList().get(r) != null) {
                 Movie currMovie = getMovieList().get(r);
                 System.out.println("Select a movie to replace: ");
                 System.out.println("[1] " + getMovie1pm().getName());
