@@ -3,6 +3,8 @@ import org.junit.Before;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 
 public class MovieAdminTest {
 
@@ -27,8 +29,7 @@ public class MovieAdminTest {
         setUp();;
         Movie movie2 = m.createMovie("Harry Potter");
 
-       // System.out.println(m.getMovieList().get(0).getName());
-        //System.out.println(m.getMovieList().get(1).getName());
+
 
         assertEquals(movie2, m.getMovieList().get(1));
 
@@ -62,6 +63,31 @@ public class MovieAdminTest {
 
          assertEquals("Get Out" , m.getMovieList().get(0).getName());
          assertEquals(4, m.getMovieList().get(0).getBookedSeats());
+
+    }
+
+    @Test
+    public void generateMovieListTest(){
+
+        setUp();
+       // Movie movie2 = new Movie("Harry Potter");
+        //Movie movie3 = new Movie("Avengers");
+
+        //m.getMovieList().add(movie2);
+       // m.getMovieList().add(movie3);
+
+        ArrayList<Movie> movies = m.generateMovieList();
+
+
+        assertEquals("The Hangover", movies.get(0).getName());
+        assertEquals("Harry Potter", movies.get(1).getName());
+        assertEquals("Avengers", movies.get(2).getName());
+
+
+
+
+
+
 
     }
 }

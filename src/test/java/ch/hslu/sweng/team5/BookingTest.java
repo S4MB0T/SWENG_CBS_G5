@@ -16,12 +16,7 @@ public class BookingTest {
     }
 
 
-    @Test
-   public void generateRefTest(){
-        booking.generateRef();
 
-
-    }
 
 }
 

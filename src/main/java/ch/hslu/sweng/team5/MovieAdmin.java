@@ -11,9 +11,9 @@ public class MovieAdmin {
 
 
     //Movie variables for timings
-    private static Movie movie1pm = new Movie("default name");
-    private static Movie movie6pm = new Movie("default name");
-    private static Movie movie9pm = new Movie("default name");
+    private static Movie movie1pm = new Movie("The Hangover");
+    private static Movie movie6pm = new Movie("Harry Potter");
+    private static Movie movie9pm = new Movie("Avengers");
 
     //Static initialisation block to add the default movies to arrayList
 //    static{

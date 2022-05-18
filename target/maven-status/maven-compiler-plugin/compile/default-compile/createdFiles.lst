@@ -1,7 +1,7 @@
-ch/hslu/sweng/team5/MovieAdmin.class
-ch/hslu/sweng/team5/Data.class
-ch/hslu/sweng/team5/Movie.class
-ch/hslu/sweng/team5/Menu.class
-ch/hslu/sweng/team5/App.class
-ch/hslu/sweng/team5/BookingAdmin.class
-ch/hslu/sweng/team5/Booking.class
+ch\hslu\sweng\team5\Data.class
+ch\hslu\sweng\team5\App.class
+ch\hslu\sweng\team5\Menu.class
+ch\hslu\sweng\team5\Booking.class
+ch\hslu\sweng\team5\Movie.class
+ch\hslu\sweng\team5\MovieAdmin.class
+ch\hslu\sweng\team5\BookingAdmin.class
