@@ -5,8 +5,10 @@ import java.util.ArrayList;
 public class MovieAdmin {
 
     private static ArrayList<Movie> movieList = new ArrayList<>();
+
     //Non-static arraylist for serialisation
     private ArrayList<Movie> moviesList = new ArrayList<>();
+
 
     //Movie variables for timings
     private static Movie movie1pm = new Movie("default name");

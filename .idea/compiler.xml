@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="SWENG_CBS_G5" />
         <module name="CinemaBookingSystem_Team5" />
       </profile>
     </annotationProcessing>
