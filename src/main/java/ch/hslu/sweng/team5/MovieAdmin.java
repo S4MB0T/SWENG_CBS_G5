@@ -11,9 +11,9 @@ public class MovieAdmin {
 
 
     //Movie variables for timings
-    private static Movie movie1pm = new Movie("The Hangover");
-    private static Movie movie6pm = new Movie("Harry Potter");
-    private static Movie movie9pm = new Movie("Avengers");
+    private static Movie movie1pm = new Movie("default name");
+    private static Movie movie6pm = new Movie("default name");
+    private static Movie movie9pm = new Movie("default name");
 
     //Static initialisation block to add the default movies to arrayList
 //    static{
@@ -50,9 +50,15 @@ public class MovieAdmin {
     //Add all movies from the static arraylist to non-static one for serialisation
     public ArrayList<Movie> generateMovieList(){
         //moviesList.addAll(movieList);
-        moviesList.add(movie1pm);
-        moviesList.add(movie6pm);
-        moviesList.add(movie9pm);
+        if(!movie1pm.getName().equals("default name")) {
+            moviesList.add(movie1pm);
+        }
+        if(!movie6pm.getName().equals("default name")) {
+            moviesList.add(movie6pm);
+        }
+        if(!movie9pm.getName().equals("default name")) {
+            moviesList.add(movie9pm);
+        }
         return moviesList;
     }
 

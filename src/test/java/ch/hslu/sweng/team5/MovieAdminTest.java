@@ -78,10 +78,15 @@ public class MovieAdminTest {
 
         ArrayList<Movie> movies = m.generateMovieList();
 
-
-        assertEquals("The Hangover", movies.get(0).getName());
-        assertEquals("Harry Potter", movies.get(1).getName());
-        assertEquals("Avengers", movies.get(2).getName());
+        if (!m.getMovie1pm().getName().equals("default name")) {
+            assertEquals(m.getMovie1pm().getName(), movies.get(0).getName());
+        }
+        if (!m.getMovie6pm().getName().equals("default name")) {
+            assertEquals(m.getMovie6pm().getName(), movies.get(1).getName());
+        }
+        if (!m.getMovie9pm().getName().equals("default name")) {
+            assertEquals(m.getMovie9pm().getName(), movies.get(2).getName());
+        }
 
 
 
